@@ -1,0 +1,355 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-bg: #F5F0E8;
+  --color-text-primary: #2D2D2D;
+  --color-text-secondary: #6B6B6B;
+  --color-divider: #D4D4D4;
+
+  --color-challenge-main: #FF8C42;
+  --color-challenge-hover: #E67320;
+  --color-challenge-bg: #FFF0E0;
+  --color-challenge-border: #FF8C42;
+
+  --color-discovery-main: #6A9FD8;
+  --color-discovery-hover: #4A7FB5;
+  --color-discovery-bg: #D6E8FF;
+  --color-discovery-border: #6A9FD8;
+
+  --color-relax-main: #4ECDC4;
+  --color-relax-hover: #3AAFA6;
+  --color-relax-bg: #EDFAF9;
+  --color-relax-border: #4ECDC4;
+
+  --font-family: 'Nunito', sans-serif;
+
+  --space-xs: 8px;
+  --space-s: 16px;
+  --space-m: 24px;
+  --space-l: 32px;
+  --space-xl: 48px;
+  --space-xxl: 64px;
+  --space-xxxl: 80px;
+
+  --radius-card: 28px;
+  --radius-button: 999px;
+  --radius-button-secondary: 16px;
+
+  --shadow-card: 0px 8px 24px rgba(0, 0, 0, 0.10);
+  --shadow-card-hover: 0px 12px 32px rgba(0, 0, 0, 0.18);
+  --shadow-modal: 0px 16px 48px rgba(0, 0, 0, 0.24);
+
+  --transition-fast: 150ms ease-out;
+  --transition-normal: 220ms ease-out;
+  --transition-slow: 280ms ease-out;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--color-bg);
+  font-family: var(--font-family);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* #root ma stałe wymiary 1920×1080 i jest skalowany do viewportu */
+#root {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  transform: translate(-50%, -50%) scale(var(--app-scale, 1));
+  transform-origin: center center;
+}
+
+:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─── Animacje ─── */
+
+@keyframes screen-enter-forward {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+@keyframes screen-exit-forward {
+  from { transform: translateX(0);    opacity: 1; }
+  to   { transform: translateX(-30%); opacity: 0; }
+}
+
+@keyframes screen-enter-backward {
+  from { transform: translateX(-100%); opacity: 0; }
+  to   { transform: translateX(0);     opacity: 1; }
+}
+
+@keyframes screen-exit-backward {
+  from { transform: translateX(0);   opacity: 1; }
+  to   { transform: translateX(30%); opacity: 0; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.animate-enter-forward  { animation: screen-enter-forward  var(--transition-slow) ease-out both; }
+.animate-exit-forward   { animation: screen-exit-forward   var(--transition-slow) ease-out both; }
+.animate-enter-backward { animation: screen-enter-backward var(--transition-slow) ease-out both; }
+.animate-exit-backward  { animation: screen-exit-backward  var(--transition-slow) ease-out both; }
+
+.animate-fade-in {
+  animation: fade-in 200ms ease-out both;
+}
+
+/* ─── Ekran bazowy ─── */
+
+.screen {
+  position: absolute;
+  inset: 0;
+  width: 1920px;
+  height: 1080px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-bg);
+}
+
+/* ─── Ekran startowy ─── */
+
+.start-screen__headline {
+  font-size: 112px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-xxxl);
+  text-align: center;
+}
+
+.start-screen__cards {
+  display: flex;
+  gap: 40px;
+  padding: 0 80px;
+  width: 100%;
+}
+
+/* ─── Karta Świata ─── */
+
+.world-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-l);
+  min-height: 380px;
+  padding: 40px;
+  border-radius: var(--radius-card);
+  border-width: 4px;
+  border-style: solid;
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+  transition:
+    box-shadow var(--transition-normal),
+    transform var(--transition-normal),
+    border-color var(--transition-normal);
+  font-family: var(--font-family);
+}
+
+.world-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: scale(1.03);
+  border-color: var(--hover-border, currentColor);
+}
+
+.world-card:active {
+  transform: scale(0.97);
+}
+
+.world-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.world-card__title {
+  font-size: 72px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.world-card__cta {
+  width: 100%;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-button);
+  color: #FFFFFF;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1;
+  padding: 16px 40px;
+  margin-top: auto;
+  transition: transform var(--transition-fast);
+}
+
+.world-card:hover .world-card__cta {
+  transform: scale(1.02);
+}
+
+.world-card:active .world-card__cta {
+  transform: scale(0.97);
+}
+
+/* ─── Ekran Świata (Ekran 2) ─── */
+
+.world-screen {
+  position: relative;
+}
+
+.world-screen__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-m);
+  margin-bottom: var(--space-xxl);
+}
+
+.world-screen__title {
+  font-size: 72px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.world-screen__games {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+  width: 640px;
+}
+
+/* ─── Przycisk gry ─── */
+
+.game-button {
+  height: 80px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 32px;
+  border-radius: var(--radius-button-secondary);
+  background: #FFFFFF;
+  border-width: 3px;
+  border-style: solid;
+  color: var(--color-text-primary);
+  font-size: 36px;
+  font-weight: 700;
+  font-family: var(--font-family);
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    transform var(--transition-fast),
+    border-color var(--transition-fast);
+  text-align: left;
+}
+
+.game-button:hover {
+  background: var(--hover-bg, #F5F5F5);
+  transform: scale(1.02);
+  border-color: var(--hover-border, currentColor);
+}
+
+.game-button:active {
+  transform: scale(0.98);
+}
+
+.game-button__icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.game-button__name {
+  flex: 1;
+}
+
+/* ─── Przycisk powrotu ─── */
+
+.back-button {
+  position: fixed;
+  top: 32px;
+  left: 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: none;
+  font-size: 36px;
+  font-weight: 700;
+  font-family: var(--font-family);
+  cursor: pointer;
+  min-width: 48px;
+  min-height: 48px;
+  padding: 8px;
+  transition: opacity var(--transition-fast);
+  z-index: 10;
+}
+
+.back-button:hover {
+  opacity: 0.75;
+}
+
+/* ─── GameFrame (iframe, renderowany jako portal w document.body) ─── */
+
+.game-frame {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 100;
+}
+
+.game-frame__iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.game-frame__back-overlay {
+  position: fixed;
+  top: 24px;
+  left: 32px;
+  z-index: 101;
+}
+
+.game-frame__back-overlay .back-button {
+  position: static;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+  padding: 10px 20px 10px 14px;
+  font-size: 22px;
+}
