@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Baloo+2:wght@500;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Architekci na Czas — kolorowy, kreskówkowy design system.
+   All colors MUST be HSL. */
+
+@layer base {
+  :root {
+    /* Tło tablicy — ciepły kremowy "papier z bloku" */
+    --background: 45 70% 96%;
+    --foreground: 230 35% 18%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 230 35% 18%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 230 35% 18%;
+
+    /* Primary = sunshine yellow (plac budowy) */
+    --primary: 45 100% 55%;
+    --primary-foreground: 230 50% 15%;
+
+    --secondary: 200 85% 55%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 45 30% 90%;
+    --muted-foreground: 230 15% 40%;
+
+    --accent: 280 75% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 140 65% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --border: 230 35% 18%;
+    --input: 230 20% 88%;
+    --ring: 45 100% 55%;
+
+    /* Drużyny — żywe, kontrastowe */
+    --team-red: 358 78% 55%;
+    --team-red-foreground: 0 0% 100%;
+    --team-blue: 215 85% 52%;
+    --team-blue-foreground: 0 0% 100%;
+    --team-green: 145 65% 45%;
+    --team-orange: 25 95% 55%;
+    --team-purple: 275 70% 55%;
+    --team-teal: 175 70% 42%;
+
+    /* Klocki — 10 typów */
+    --block-square: 0 80% 60%;
+    --block-rect: 215 85% 55%;
+    --block-roof: 12 90% 58%;
+    --block-funnel: 45 100% 55%;
+    --block-tower: 145 60% 50%;
+    --block-castle: 195 75% 50%;
+    --block-dome: 320 65% 60%;
+    --block-trapezoid: 25 90% 58%;
+    --block-rhombus: 280 70% 60%;
+    --block-lego: 175 70% 45%;
+
+    /* Stabilność wieży */
+    --stability-good: 140 65% 45%;
+    --stability-warn: 38 95% 55%;
+    --stability-bad: 0 85% 60%;
+
+    --radius: 1.25rem;
+
+    /* Cienie kreskówkowe (offset solid) */
+    --shadow-cartoon: 4px 4px 0 0 hsl(var(--border));
+    --shadow-cartoon-lg: 6px 6px 0 0 hsl(var(--border));
+    --shadow-cartoon-xl: 8px 8px 0 0 hsl(var(--border));
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 230 40% 12%;
+    --foreground: 45 70% 96%;
+    --card: 230 35% 16%;
+    --card-foreground: 45 70% 96%;
+    --popover: 230 35% 16%;
+    --popover-foreground: 45 70% 96%;
+    --primary: 45 100% 60%;
+    --primary-foreground: 230 50% 15%;
+    --secondary: 200 85% 55%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 230 25% 22%;
+    --muted-foreground: 45 20% 75%;
+    --accent: 280 75% 65%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 45 70% 96%;
+    --input: 230 25% 22%;
+    --ring: 45 100% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Fredoka', system-ui, sans-serif;
+    font-weight: 500;
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Baloo 2', system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  .cartoon-shadow {
+    box-shadow: var(--shadow-cartoon);
+  }
+  .cartoon-shadow-lg {
+    box-shadow: var(--shadow-cartoon-lg);
+  }
+  .cartoon-shadow-xl {
+    box-shadow: var(--shadow-cartoon-xl);
+  }
+  .cartoon-border {
+    @apply border-[3px] border-foreground;
+  }
+  .cartoon-border-thick {
+    @apply border-4 border-foreground;
+  }
+  .stripe-bg {
+    background-image: repeating-linear-gradient(
+      45deg,
+      hsl(var(--primary)) 0,
+      hsl(var(--primary)) 20px,
+      hsl(var(--foreground)) 20px,
+      hsl(var(--foreground)) 30px
+    );
+  }
+}
+
+@layer utilities {
+  .text-stroke {
+    -webkit-text-stroke: 2px hsl(var(--foreground));
+  }
+  .text-stroke-lg {
+    -webkit-text-stroke: 3px hsl(var(--foreground));
+  }
+}
