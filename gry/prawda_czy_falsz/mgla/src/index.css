@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design system — Zadanie Mgła. All colors HSL. */
+@layer base {
+  :root {
+    /* Brand palette mapped from spec */
+    --background: 39 43% 93%;          /* #F5F0E6 */
+    --foreground: 240 22% 14%;         /* #1a1a2e */
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 22% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 22% 14%;
+
+    /* Primary = dark ink (accept/next buttons) */
+    --primary: 240 22% 14%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Verb buttons — blue */
+    --verb: 204 70% 53%;               /* #3498DB */
+    --verb-foreground: 0 0% 100%;
+
+    /* Behavior buttons — green */
+    --behavior: 145 63% 42%;           /* #27AE60 */
+    --behavior-foreground: 0 0% 100%;
+
+    /* Selected state — yellow */
+    --selected: 44 100% 50%;           /* #FFB800 */
+    --selected-foreground: 240 22% 14%;
+
+    --secondary: 39 30% 88%;
+    --secondary-foreground: 240 22% 14%;
+
+    --muted: 39 30% 88%;
+    --muted-foreground: 240 10% 40%;
+
+    --accent: 44 100% 50%;
+    --accent-foreground: 240 22% 14%;
+
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 22% 14%;
+    --input: 240 22% 14%;
+    --ring: 44 100% 50%;
+
+    --radius: 1rem;
+
+    /* Mystery gradient */
+    --mystery-gradient: linear-gradient(135deg, #667eea, #764ba2);
+
+    /* Stage indicator */
+    --stage-inactive: 39 20% 78%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html, body {
+    font-family: 'Nunito', system-ui, sans-serif;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .btn-pill {
+    @apply inline-flex items-center justify-center px-6 py-3 font-bold text-base rounded-full transition-all duration-200 select-none;
+    border: 2px solid transparent;
+  }
+  .btn-verb {
+    @apply btn-pill;
+    background-color: hsl(var(--verb));
+    color: hsl(var(--verb-foreground));
+  }
+  .btn-behavior {
+    @apply btn-pill;
+    background-color: hsl(var(--behavior));
+    color: hsl(var(--behavior-foreground));
+  }
+  .btn-selected {
+    background-color: hsl(var(--selected)) !important;
+    color: hsl(var(--selected-foreground)) !important;
+    border: 2px solid hsl(var(--foreground)) !important;
+  }
+  .btn-correct {
+    background-color: hsl(var(--selected)) !important;
+    color: hsl(var(--selected-foreground)) !important;
+    border: 2px solid hsl(var(--foreground)) !important;
+  }
+  .btn-wrong {
+    background-color: hsl(var(--destructive)) !important;
+    color: hsl(var(--destructive-foreground)) !important;
+  }
+  .btn-primary-dark {
+    @apply btn-pill;
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+  .card-bordered {
+    @apply bg-card text-card-foreground;
+    border: 2px solid hsl(var(--foreground));
+    border-radius: 16px;
+  }
+}
+
+/* Confetti pieces */
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 14px;
+  top: -20px;
+  opacity: 0;
+  animation: confetti-fall 2.5s ease-in forwards;
+}
+@keyframes confetti-fall {
+  0% { transform: translateY(0) rotate(0); opacity: 1; }
+  100% { transform: translateY(420px) rotate(720deg); opacity: 0; }
+}
+
+@keyframes dragon-breathe {
+  0%, 100% { transform: scale(1.0); }
+  50% { transform: scale(1.18); }
+}
