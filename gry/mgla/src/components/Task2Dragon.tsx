@@ -70,7 +70,7 @@ const Task2Dragon = ({ onSuccess, onQuit }: Task2DragonProps) => {
         <div className="w-full mb-6 rounded-xl overflow-hidden"
           style={{ border: "2px solid hsl(var(--foreground))" }}>
           <video
-            src="/smok.mp4"
+            src="smok.mp4"
             controls
             className="w-full block"
             style={{ display: "block" }}

@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently -n launcher,architekci,memory,smok,tf,mgla -c cyan,yellow,blue,green,magenta,white \"cd launcher && npm run dev\" \"cd gry/architekci_na_czas && npm run dev -- --port 8081\" \"cd gry/memory && npm run dev -- --port 8082\" \"cd gry/oddech-smoka && npm run dev -- --port 8083\" \"cd gry/prawda_czy_falsz && npm run dev -- --port 8084\" \"cd gry/mgla && npm run dev -- --port 8085\"",
+    "build": "node build.mjs",
     "install:all": "cd launcher && npm install && cd ../gry/architekci_na_czas && npm install && cd ../memory && npm install && cd ../oddech-smoka && npm install && cd ../prawda_czy_falsz && npm install && cd ../mgla && npm install"
   },
   "devDependencies": {

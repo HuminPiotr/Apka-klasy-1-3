@@ -1,0 +1,33 @@
+[build]
+  command = "node build.mjs"
+  publish = "dist"
+
+[[redirects]]
+  from = "/games/architekci/*"
+  to = "/games/architekci/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/games/memory/*"
+  to = "/games/memory/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/games/smok/*"
+  to = "/games/smok/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/games/tf/*"
+  to = "/games/tf/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/games/mgla/*"
+  to = "/games/mgla/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

@@ -44,7 +44,7 @@ const FinalScreen = ({ onMirrorDuel, onQuit }: FinalScreenProps) => {
         }}
       >
         <img
-          src="/neurony.png"
+          src="neurony.png"
           alt="Neurony Lustrzane"
           className="w-full h-auto block"
           onError={(e) => {

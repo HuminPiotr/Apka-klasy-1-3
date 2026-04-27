@@ -9,7 +9,9 @@ interface Props {
 }
 
 export function GameFrame({ game, world, onBack }: Props) {
-  const url = `http://localhost:${game.port}`;
+  const url = import.meta.env.DEV
+    ? `http://localhost:${game.port}`
+    : game.path;
 
   return createPortal(
     <div className="game-frame animate-fade-in">

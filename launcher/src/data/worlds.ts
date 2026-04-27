@@ -6,6 +6,7 @@ export interface Game {
   name: string;
   icon: string;
   port: number;
+  path: string;
 }
 
 export interface World {
@@ -31,7 +32,7 @@ export const worlds: World[] = [
     colorBorder: "#FF8C42",
     ctaLabel: "Wchodzimy!",
     games: [
-      { id: "architekci", name: "Architekci na czas", icon: "Cube", port: 8081 },
+      { id: "architekci", name: "Architekci na czas", icon: "Cube", port: 8081, path: "/games/architekci/" },
     ],
   },
   {
@@ -44,9 +45,9 @@ export const worlds: World[] = [
     colorBorder: "#6A9FD8",
     ctaLabel: "Odkrywamy!",
     games: [
-      { id: "memory", name: "Literowe Memory", icon: "TextAa", port: 8082 },
-      { id: "mgla", name: "Mgła", icon: "Cloud", port: 8085 },
-      { id: "prawda_czy_falsz", name: "Prawda czy Fałsz?", icon: "Question", port: 8084 },
+      { id: "memory", name: "Literowe Memory", icon: "TextAa", port: 8082, path: "/games/memory/" },
+      { id: "mgla", name: "Mgła", icon: "Cloud", port: 8085, path: "/games/mgla/" },
+      { id: "prawda_czy_falsz", name: "Prawda czy Fałsz?", icon: "Question", port: 8084, path: "/games/tf/" },
     ],
   },
   {
@@ -59,7 +60,7 @@ export const worlds: World[] = [
     colorBorder: "#4ECDC4",
     ctaLabel: "Relaksujemy się!",
     games: [
-      { id: "oddech_smoka", name: "Oddech Smoka", icon: "Wind", port: 8083 },
+      { id: "oddech_smoka", name: "Oddech Smoka", icon: "Wind", port: 8083, path: "/games/smok/" },
     ],
   },
 ];
